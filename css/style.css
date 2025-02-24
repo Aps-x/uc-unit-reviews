@@ -2,9 +2,13 @@
 Abstract
 ========================================================================== */
 :root {
+  --clr-cream: hsl(34, 100%, 95%);
+  --clr-red: hsl(6, 71%, 59%);
+  --clr-dark-1: hsl(50, 6%, 20%);
+  --clr-dark-2: hsl(48, 5%, 15%);
   --clr-white: hsl(0, 0%, 100%);
   --clr-black: hsl(260, 7%, 8%);
-  --ff-regular: "", sans-serif;
+  --ff-regular: "League Spartan", sans-serif;
   --ff-accent: "", serif;
   --fw-regular: 400;
   --fw-bold: 600;
@@ -58,8 +62,6 @@ h1, h2, h3, h4, h5, h6 {
 
 p {
   overflow-wrap: break-word;
-  -webkit-hyphens: auto;
-          hyphens: auto;
 }
 
 a {
@@ -69,7 +71,11 @@ a {
 
 a:hover {
   text-decoration: underline;
-  color: var(--clr-accent);
+  color: var(--clr-red);
+}
+
+*:focus-visible {
+  outline: 4px solid var(--clr-red);
 }
 
 .visually-hidden {
@@ -97,6 +103,59 @@ a:hover {
 /* ==========================================================================
 Components
 ========================================================================== */
+.header {
+  --max-width: 800px;
+  --gutter: 2rem;
+}
+.header__title {
+  font-size: var(--fs-large);
+  font-weight: var(--fw-bold);
+}
+.header__subtitle {
+  font-size: var(--fs-medium);
+  text-wrap: pretty;
+}
+
+.card {
+  padding: 1rem;
+  border-radius: 12px;
+  border-style: solid;
+  border-color: var(--clr-dark-2);
+  box-shadow: 10px 10px 0px 0px var(--clr-dark-2);
+  background-color: var(--clr-cream);
+}
+.card__title {
+  font-weight: var(--fw-bold);
+}
+
+.search {
+  padding: 1rem;
+  color: var(--clr-dark-1);
+  border-radius: 12px;
+  border-color: var(--clr-dark-2);
+  border-style: solid;
+  border-radius: 12px;
+  box-shadow: 6px 6px 0px 0px var(--clr-dark-2);
+  background-color: var(--clr-cream);
+}
+
+.dropdown {
+  padding: 1rem;
+  color: var(--clr-dark-1);
+  font-weight: var(--fw-bold);
+  border-radius: 12px;
+  border-color: var(--clr-dark-2);
+  border-style: solid;
+  border-radius: 12px;
+  box-shadow: 6px 6px 0px 0px var(--clr-dark-2);
+  background-color: var(--clr-cream);
+}
+
+.footer {
+  text-align: center;
+  margin-top: 5rem;
+}
+
 .icon {
   display: inline-block;
   width: 1em;
@@ -105,12 +164,84 @@ Components
   margin-top: calc(1ex - 1cap);
 }
 
+.line-clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: var(--lines, 3);
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.texture {
+  position: fixed;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-repeat: repeat;
+  background-image: url("../images/noise.png");
+  pointer-events: none;
+}
+
 /* ==========================================================================
 Pages
 ========================================================================== */
+.home {
+  background-image: url("../images/blob_yellow.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: var(--clr-cream);
+  padding-block: 2rem;
+}
+.home__main {
+  --max-width: 1400px;
+  --gutter: 2rem;
+  container: home__main/inline-size;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  padding-block: 3rem;
+}
+@container home__main (inline-size < 500px) {
+  .controls {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card-grid {
+  --min: 350px;
+  --gap: 2rem;
+}
+
 /* ==========================================================================
 Layout
 ========================================================================== */
+@property --min {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 1rem;
+}
+@property --gap {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 1rem;
+}
+@property --max-width {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 1000px;
+}
+@property --gutter {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 2rem;
+}
+.content-column {
+  width: min(var(--max-width, 1000px), 100% - var(--gutter, 2rem) * 2);
+  margin-inline: auto;
+}
+
 .even-columns {
   display: grid;
   gap: 1rem;
@@ -118,31 +249,26 @@ Layout
   grid-auto-columns: 1fr;
 }
 
-.content-column {
-  --max-width: 1200px;
-  --gutter: 2rem;
-  width: min(var(--max_width), 100% - var(--container_gutter) * 2);
-  margin-inline: auto;
+.grid-auto-fit {
+  display: grid;
+  grid-gap: var(--gap, 1rem);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--min, 15ch)), 1fr));
 }
 
-.grid-auto-fit {
-  --min: 15ch;
-  --gap: 1rem;
+.grid-auto-fill {
   display: grid;
-  grid-gap: var(--gap);
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--min)), 1fr));
+  grid-gap: var(--gap, 1rem);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, var(--min, 15ch)), 1fr));
 }
 
 .flexbox-grid {
-  --min: 15ch;
-  --gap: 1rem;
   display: flex;
   flex-wrap: wrap;
-  gap: var(--gap);
+  gap: var(--gap, 1rem);
 }
 
 .flexbox-grid > * {
-  flex: 1 1 var(--min);
+  flex: 1 1 var(--min, 10ch);
 }
 
 .stack-layout {
@@ -211,6 +337,10 @@ Utility
 
 .order-first {
   order: -1;
+}
+
+.is-hidden {
+  display: none;
 }
 
 .my-auto {
