@@ -14,6 +14,7 @@ Abstract
   --fw-bold: 600;
   --fs-small: clamp(0.9375rem, 0.9158rem + 0.1087vw, 1rem);
   --fs-regular: clamp(1.125rem, 1.0815rem + 0.2174vw, 1.25rem);
+  --fs-semimedium: clamp(1.35rem, 1.2761rem + 0.3696vw, 1.5625rem);
   --fs-medium: clamp(1.62rem, 1.5041rem + 0.5793vw, 1.9531rem);
   --fs-semilarge: clamp(2.3328rem, 2.0827rem + 1.2504vw, 3.0518rem);
   --fs-large: clamp(3.3592rem, 2.8691rem + 2.4507vw, 4.7684rem);
@@ -70,7 +71,6 @@ a {
 }
 
 a:hover {
-  text-decoration: underline;
   color: var(--clr-red);
 }
 
@@ -117,6 +117,7 @@ Components
 }
 
 .card {
+  --lines: 5;
   padding: 1rem;
   border-radius: 12px;
   border-style: solid;
@@ -126,6 +127,11 @@ Components
 }
 .card__title {
   font-weight: var(--fw-bold);
+  font-size: var(--fs-semimedium);
+}
+.card__header {
+  display: grid;
+  grid-template-columns: 1fr auto;
 }
 
 .search {
@@ -196,20 +202,18 @@ Pages
   --gutter: 2rem;
   container: home__main/inline-size;
 }
-
-.controls {
+.home__controls {
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 1rem;
   padding-block: 3rem;
 }
 @container home__main (inline-size < 500px) {
-  .controls {
+  .home__controls {
     grid-template-columns: 1fr;
   }
 }
-
-.card-grid {
+.home__grid {
   --min: 350px;
   --gap: 2rem;
 }
@@ -268,7 +272,7 @@ Layout
 }
 
 .flexbox-grid > * {
-  flex: 1 1 var(--min, 10ch);
+  flex: 1 1 var(--min, auto);
 }
 
 .stack-layout {

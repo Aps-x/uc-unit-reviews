@@ -1,25 +1,26 @@
 const cards = document.querySelectorAll('.card');
+const search = document.getElementById("search");
 
 function liveSearch() {
-    let search_query = document.getElementById("search").value.toLowerCase();
+    let search_query = search.value.toLowerCase();
 
     for (let i = 0; i < cards.length; i++) {
         let title = cards[i].querySelector('.card__title').textContent.toLowerCase();
 
         if (title.includes(search_query)) {
             cards[i].classList.remove("is-hidden");
-        } else {
+        } 
+        else {
             cards[i].classList.add("is-hidden");
         }
     }
 }
 
-// A little delay
-let typingTimer;               
-let typeInterval = 500;  
-let searchInput = document.getElementById('search');
+// Avoid blocking the event loop by adding a delay
+let timer;               
+const search_timeout_interval = 500;  
 
-searchInput.addEventListener('keyup', () => {
-    clearTimeout(typingTimer);
-    typingTimer = setTimeout(liveSearch, typeInterval);
+search.addEventListener('keyup', () => {
+    clearTimeout(timer);
+    timer = setTimeout(liveSearch, search_timeout_interval);
 });
