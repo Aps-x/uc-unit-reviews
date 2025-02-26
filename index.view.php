@@ -9,10 +9,12 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet"></head>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
 
-    <?php require 'php/index.php' ?>
     <script src="js/search.js" defer></script>
+    
+    <?php require 'php/controllers/index.php' ?>
+</head>
 <body class="home">
     <div class="texture"></div>
     <header class="header | content-column flow">
@@ -42,77 +44,7 @@
             <h2 class="visually-hidden">Units</h2>
 
             <div class="home__grid | grid-auto-fill">
-                <a href="">
-                    <article class="card | flow">
-                        <header class="card__header">
-                            <h3 class="card__title">Database Design</h3>
-                            <div>
-                                <div class="card__star-rating">★★★★★</div>
-                                <p class="card__review-count">80 Reviews</p>
-                            </div>
-                        </header>
-    
-    
-                        <p class="card__description | line-clamp">
-                            This unit introduces a practical approach to the development and design of 
-                            database systems. The emphasis is placed on relational database management 
-                            systems, their development and implementation in a modern organisational 
-                            environment. The use of modern query languages for relational databases is 
-                            discussed and experienced. Conceptual, logical and physical database design 
-                            issues are also covered. Other topics include client server database computing 
-                            and database administration issues. 
-                        </p>
-                    </article>
-                </a>
-
-
-
-                <a href="">
-                    <article class="card | flow">
-                        <header class="card__header">
-                            <h3 class="card__title">Database Design</h3>
-                            <div>
-                                <div class="card__star-rating">★★★★★</div>
-                                <p class="card__review-count">80 Reviews</p>
-                            </div>
-                        </header>
-    
-    
-                        <p class="card__description | line-clamp">
-                            This unit introduces a practical approach to the development and design of 
-                            database systems. The emphasis is placed on relational database management 
-                            systems, their development and implementation in a modern organisational 
-                            environment. The use of modern query languages for relational databases is 
-                            discussed and experienced. Conceptual, logical and physical database design 
-                            issues are also covered. Other topics include client server database computing 
-                            and database administration issues. 
-                        </p>
-                    </article>
-                </a>
-
-
-                <a href="">
-                    <article class="card | flow">
-                        <header class="card__header">
-                            <h3 class="card__title">Database Design</h3>
-                            <div>
-                                <div class="card__star-rating">★★★★★</div>
-                                <p class="card__review-count">80 Reviews</p>
-                            </div>
-                        </header>
-    
-    
-                        <p class="card__description | line-clamp">
-                            This unit introduces a practical approach to the development and design of 
-                            database systems. The emphasis is placed on relational database management 
-                            systems, their development and implementation in a modern organisational 
-                            environment. The use of modern query languages for relational databases is 
-                            discussed and experienced. Conceptual, logical and physical database design 
-                            issues are also covered. Other topics include client server database computing 
-                            and database administration issues. 
-                        </p>
-                    </article>
-                </a>
+                <?php echo $cards ?>   
             </div>
         </section>
     </main>

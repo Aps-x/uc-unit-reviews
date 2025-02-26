@@ -128,10 +128,12 @@ Components
 .card__title {
   font-weight: var(--fw-bold);
   font-size: var(--fs-semimedium);
+  text-wrap: balance;
 }
 .card__header {
   display: grid;
   grid-template-columns: 1fr auto;
+  gap: 1rem;
 }
 
 .search {

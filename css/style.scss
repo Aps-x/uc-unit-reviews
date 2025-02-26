@@ -142,10 +142,12 @@ Components
     &__title {
         font-weight: var(--fw-bold);
         font-size: var(--fs-semimedium);
+        text-wrap: balance;
     }
     &__header {
         display: grid;
         grid-template-columns: 1fr auto;
+        gap: 1rem;
     }
 }
 .search {
