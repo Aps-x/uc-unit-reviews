@@ -6,9 +6,9 @@
 
     <title>Document</title>
 
-    <?php require 'php/controllers/course.php' ?>
+    <?php require '../controllers/course.php' ?>
 </head>
 <body>
-    
+    <h1><?php echo $course_info["title"]; ?></h1>
 </body>
 </html>

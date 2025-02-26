@@ -44,7 +44,24 @@
             <h2 class="visually-hidden">Units</h2>
 
             <div class="home__grid | grid-auto-fill">
-                <?php echo $cards ?>   
+
+                <?php foreach ($courses_list as $course): ?>
+                    <article class="card">
+                        <a href="php/views/course.view.php?course=<?= urlencode($course['id']) ?>" class="flow">
+                            <header class="card__header">
+                                <h3 class="card__title"><?= $course['title'] ?> (<?= $course['id'] ?>)</h3>
+                                <div>
+                                    <div class="card__star-rating">★★★★★</div>
+                                    <p class="card__review-count">80 Reviews</p>
+                                </div>
+                            </header>
+                            <p class="card__description | line-clamp">
+                                <?= $course['description'] ?>
+                            </p>
+                        </a>
+                    </article>
+                <?php endforeach; ?>
+
             </div>
         </section>
     </main>

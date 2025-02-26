@@ -18,7 +18,43 @@ if ($conn) {
     debug_to_console("Connection established");
 }
 
-function debug_to_console($data) {
+
+function Get_All_Courses($conn) {
+    $result = mysqli_query($conn, "SELECT * FROM course");
+
+    $courses = [];
+    while ($course = mysqli_fetch_assoc($result)) {
+        $courses[] = [
+            'id' => htmlspecialchars($course['ID']),
+            'title' => htmlspecialchars($course['Title']),
+            'description' => htmlspecialchars($course['Description'])
+        ];
+    }
+
+    mysqli_free_result($result);
+    return $courses;
+}
+
+function Get_Course_Info_Array($conn, $course) {
+    $stmt = $conn->prepare("SELECT * FROM course WHERE id = ?");
+    $stmt->bind_param("s", $course);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+
+    if (!$row) {
+        return null;
+    }
+
+    return [
+        'id' => htmlspecialchars($row['ID']),
+        'title' => htmlspecialchars($row['Title']),
+        'description' => htmlspecialchars($row['Description'])
+    ];
+}
+
+
+function Debug_To_Console($data) {
     $output = $data;
     if (is_array($output))
         $output = implode(',', $output);
