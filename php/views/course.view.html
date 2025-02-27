@@ -64,14 +64,43 @@
 
             <h3 class="fw-bold fs-medium">Write A Review</h3>
 
-            <form class="review-form" action="">
-                <input class="review-form__input" type="text" name="" id="" placeholder="title">
+            <form class="review-form" action="" method="post">
+                <input class="review-form__input" type="text" name="" id="" placeholder="Title">
 
-                <textarea class="review-form__textarea" name="" id="" placeholder="What was your experience? How difficult, enjoyable, and useful is this course?"></textarea>
+                <textarea class="review-form__textarea" name="" id="" placeholder="What was your experience? How difficult, enjoyable, and useful was this course for you?"></textarea>
 
-                <div>
-                    <label for="rating">Overall Rating:</label>
-                    <input class="review-form__slider" type="range" name="rating" id="rating" min="0" max="5" placeholder="0">
+                <div class="review-form__slider-group">
+                    <label class="fw-bold" for="rating">Overall Rating:</label>
+                    <input class="review-form__slider" type="range" name="rating" id="rating" min="0" max="5" placeholder="0" oninput="this.nextElementSibling.value = this.value">
+                    <output for="rating">3</output>
+                </div>
+
+                <div class="review-form__slider-group">
+                    <label class="fw-bold" for="enjoyment">Enjoyment:</label>
+                    <input class="review-form__slider" type="range" name="enjoyment" id="enjoyment" min="0" max="5" placeholder="0" oninput="this.nextElementSibling.value = this.value">
+                    <output for="enjoyment">3</output>
+                </div>
+
+                <div class="review-form__slider-group">
+                    <label class="fw-bold" for="usefulness">Usefulness:</label>
+                    <input class="review-form__slider" type="range" name="usefulness" id="usefulness" min="0" max="5" placeholder="0" oninput="this.nextElementSibling.value = this.value">
+                    <output for="usefulness">3</output>
+                </div>
+
+                <div class="review-form__slider-group">
+                    <label class="fw-bold" for="manageability">Manageability:</label>
+                    <input class="review-form__slider" type="range" name="manageability" id="manageability" min="0" max="5" placeholder="0" oninput="this.nextElementSibling.value = this.value">
+                    <output for="manageability">3</output>
+                </div>
+
+                <div class="review-form__input-group">
+                    <label class="fw-bold" for="completion">Course Completion:</label>
+                    <input class="review-form__input" type="text" name="completion" id="completion" placeholder="2023 S1">
+                </div>
+
+                <div class="review-form__input-group">
+                    <label class="fw-bold" for="completion">Grade:</label>
+                    <input class="review-form__input" type="number" name="completion" id="completion" min="0" max="100" value="50">
                 </div>
 
                 <button class="button" type="submit">
@@ -84,7 +113,7 @@
         </section>
 
         <section>
-            <h2 class="fw-bold fs-extramedium">Reviews</h2>
+            <h2 class="fw-bold fs-extramedium">Reviews</h2>  
 
             <article class="review | flow">
                 <h3 class="review__title">Poggers</h3>
@@ -124,12 +153,12 @@
 
                 <div class="flexbox-grid | min-auto txt-center">
                     <div>
-                        <p class="inline-block">Term taken:</p>
-                        <div class="inline-block">23S1</div>
+                        <p class="inline-block fw-bold">Term taken:</p>
+                        <div class="inline-block">2023 S1</div>
                     </div>
     
                     <div>
-                        <p class="inline-block">Grade:</p>
+                        <p class="inline-block fw-bold">Grade:</p>
                         <div class="inline-block">92</div>
                     </div>
                 </div>

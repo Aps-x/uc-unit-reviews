@@ -161,16 +161,20 @@ Components
     flex-direction: column;
     align-items: center;
     &__circle {
-        width: 60px;
-        height: 60px;
+        width: 5rem;
+        aspect-ratio: 1;
         border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 1.2em;
+        background-color: var(--clr-yellow);
+        display: grid;
+        place-content: center;
+        place-items: center;
+    }
+    &__value {
         font-weight: bold;
-        background: #222;
-        position: relative;
+        font-size: var(--fs-semi-medium);
+    }
+    &__label {
+        margin-top: 0.25rem;
     }
 }
 .review {
@@ -189,15 +193,31 @@ Components
     gap: 1rem;
     &__input {
         padding: 0.5rem;
+        background-color: var(--clr-white);
+        border-width: 3px;
     }
     &__textarea {
         padding: 0.5rem;
         resize: none;
         aspect-ratio: 100/75;
+        background-color: var(--clr-white);
+        border-width: 3px;
     }
     &__slider {
         vertical-align: middle;
         accent-color: var(--clr-yellow);
+        min-width: 0;
+    }
+    &__slider-group {
+        display: grid;
+        grid-template-columns: 12ch 1fr 1ch;
+        gap: 1rem;
+    }
+    &__input-group {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+        gap: 1rem;
+        align-items: center;
     }
 }
 .search {
@@ -350,7 +370,7 @@ Pages
     background-color: var(--clr-cream);
     &-main {
         --max-width: 1400px;
-        --gutter: 2rem;
+        --gutter: 1rem;
         --min: 350px;
         --gap: 2rem;
         margin-block: 5rem;
