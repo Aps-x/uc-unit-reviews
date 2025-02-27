@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Adam Seaton">
+    <meta name="description" content="University of Canberra IT unit reviews">
+
+    <title>UC Unit Reviews | <?php echo $course_info["title"]; ?></title>
+
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
+
+    <?php require '../controllers/course.php' ?>
+</head>
+<body class="course">
+    <div class="texture"></div>
+    <main class="course-main | content-column grid-auto-fit">
+        <section class="flow">
+            <!-- <?php echo $course_info["title"]; ?> -->
+            <h1 class="fw-bold fs-semilarge">Software Technology (4483)</h1>
+
+            <h2 class="visually-hidden">Unit details</h2>
+
+            <div class="inline-block">★★★★★</div>
+            <p class="inline-block">80 Reviews</p>
+
+            <div class="flexbox-grid | min-auto">
+                <div class="rating">
+                    <div class="rating__circle">
+                        <span class="rating__value">4.8</span>
+                    </div>
+                    <p class="rating__label">Enjoyment</p>
+                </div>
+
+                <div class="rating">
+                    <div class="rating__circle">
+                        <span class="rating__value">4.8</span>
+                    </div>
+                    <p class="rating__label">Usefulness</p>
+                </div>
+
+                <div class="rating">
+                    <div class="rating__circle">
+                        <span class="rating__value">4.8</span>
+                    </div>
+                    <p class="rating__label">Manageability</p>
+                </div>
+            </div>
+            
+            <h3 class="fw-bold fs-medium">Description</h3>
+
+            <p>
+                An introduction to problem-solving via programming, which aims to have students develop 
+                proficiency in using a high level programming language. Topics: algorithms, program 
+                structures (statements, sequence, selection, iteration, functions), data types (numeric,
+                character), data structures (arrays, tuples, pointers, lists), storage structures 
+                (memory, addresses), introduction to analysis of algorithms, testing, code quality, 
+                teamwork, and reflective practice. The course includes extensive practical work in labs
+                and programming projects. Additional Information
+            </p>
+
+            <h3 class="fw-bold fs-medium">Write A Review</h3>
+
+            <form class="review-form" action="">
+                <input class="review-form__input" type="text" name="" id="" placeholder="title">
+
+                <textarea class="review-form__textarea" name="" id="" placeholder="What was your experience? How difficult, enjoyable, and useful is this course?"></textarea>
+
+                <div>
+                    <label for="rating">Overall Rating:</label>
+                    <input class="review-form__slider" type="range" name="rating" id="rating" min="0" max="5" placeholder="0">
+                </div>
+
+                <button class="button" type="submit">
+                    <span class="button__shadow"></span>
+                    <span class="button__edge"></span>
+                    <span class="button__front">Submit</span>
+                </button>
+            </form>
+            
+        </section>
+
+        <section>
+            <h2 class="fw-bold fs-extramedium">Reviews</h2>
+
+            <article class="review | flow">
+                <h3 class="review__title">Poggers</h3>
+
+                <div>
+                    <p class="inline-block">Overall rating:</p>
+                    <div class="inline-block">★★★★★</div>
+                </div>
+
+                <p class="review__body"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos, 
+                    voluptas non esse quam et enim consectetur qui excepturi id optio quo pariatur 
+                    inventore facere quia repellat cupiditate quaerat in libero?
+                </p>
+
+                <div class="flexbox-grid | min-auto">
+                    <div class="rating">
+                        <div class="rating__circle">
+                            <span class="rating__value">4.8</span>
+                        </div>
+                        <p class="rating__label">Enjoyment</p>
+                    </div>
+    
+                    <div class="rating">
+                        <div class="rating__circle">
+                            <span class="rating__value">4.8</span>
+                        </div>
+                        <p class="rating__label">Usefulness</p>
+                    </div>
+    
+                    <div class="rating">
+                        <div class="rating__circle">
+                            <span class="rating__value">4.8</span>
+                        </div>
+                        <p class="rating__label">Manageability</p>
+                    </div>
+                </div>
+
+                <div class="flexbox-grid | min-auto txt-center">
+                    <div>
+                        <p class="inline-block">Term taken:</p>
+                        <div class="inline-block">23S1</div>
+                    </div>
+    
+                    <div>
+                        <p class="inline-block">Grade:</p>
+                        <div class="inline-block">92</div>
+                    </div>
+                </div>
+            </article>
+        </section>
+    </main>
+</body>
+</html>

@@ -18,8 +18,7 @@ if ($conn) {
     debug_to_console("Connection established");
 }
 
-
-function Get_All_Courses($conn) {
+function Get_All_Courses_Array($conn) {
     $result = mysqli_query($conn, "SELECT * FROM course");
 
     $courses = [];
@@ -52,7 +51,6 @@ function Get_Course_Info_Array($conn, $course) {
         'description' => htmlspecialchars($row['Description'])
     ];
 }
-
 
 function Debug_To_Console($data) {
     $output = $data;

@@ -2,10 +2,10 @@ const cards = document.querySelectorAll('.card');
 const search = document.getElementById("search");
 
 function liveSearch() {
-    let search_query = search.value.toLowerCase();
+    const search_query = search.value.toLowerCase();
 
     for (let i = 0; i < cards.length; i++) {
-        let title = cards[i].querySelector('.card__title').textContent.toLowerCase();
+        const title = cards[i].querySelector('.card__title').textContent.toLowerCase();
 
         if (title.includes(search_query)) {
             cards[i].classList.remove("is-hidden");

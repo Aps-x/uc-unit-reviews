@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Adam Seaton">
+    <meta name="description" content="University of Canberra IT unit reviews">
 
     <title>UC Unit Reviews</title>
 
@@ -23,8 +25,8 @@
             User submitted reviews (You've been warned) for a handful of UC courses.
         </p>
     </header>
-    <main class="home__main | content-column">
-        <section class="home__controls">
+    <main class="home-main | content-column">
+        <section class="home-controls">
             <h2 class="visually-hidden">Controls</h2>
 
             <label class="visually-hidden" for="search">Search for a course: </label>
@@ -40,10 +42,10 @@
             </select>
         </section>
 
-        <section class="home__units">
+        <section class="home-units">
             <h2 class="visually-hidden">Units</h2>
 
-            <div class="home__grid | grid-auto-fill">
+            <div class="home-grid | grid-auto-fill">
 
                 <?php foreach ($courses_list as $course): ?>
                     <article class="card">
