@@ -1,11 +1,29 @@
-const cards = document.querySelectorAll('.card');
+(function () {
+/* ==========================================================================
+Constants, Variables, Data
+========================================================================== */
+const cards = document.querySelectorAll(".card");
 const search = document.getElementById("search");
 
-function liveSearch() {
+const search_timeout_interval = 500;  
+let timer;               
+
+/* ==========================================================================
+Event Listeners
+========================================================================== */
+search.addEventListener("keyup", () => {
+    clearTimeout(timer);
+    timer = setTimeout(Live_Search, search_timeout_interval);
+});
+
+/* ==========================================================================
+Functions
+========================================================================== */
+function Live_Search() {
     const search_query = search.value.toLowerCase();
 
     for (let i = 0; i < cards.length; i++) {
-        const title = cards[i].querySelector('.card__title').textContent.toLowerCase();
+        const title = cards[i].querySelector(".card__title").textContent.toLowerCase();
 
         if (title.includes(search_query)) {
             cards[i].classList.remove("is-hidden");
@@ -15,12 +33,4 @@ function liveSearch() {
         }
     }
 }
-
-// Avoid blocking the event loop by adding a delay
-let timer;               
-const search_timeout_interval = 500;  
-
-search.addEventListener('keyup', () => {
-    clearTimeout(timer);
-    timer = setTimeout(liveSearch, search_timeout_interval);
-});
+})();

@@ -1,3 +1,4 @@
+<?php require '../controllers/course.php' ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,45 +7,54 @@
     <meta name="author" content="Adam Seaton">
     <meta name="description" content="University of Canberra IT unit reviews">
 
-    <title>UC Unit Reviews | <?php echo $course_info["title"]; ?></title>
+    <title>UC Unit Reviews | <?= $course_info["title"]; ?></title>
 
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
-
-    <?php require '../controllers/course.php' ?>
 </head>
 <body class="course">
     <div class="texture"></div>
+
+    <nav class="top-nav">
+        <a href="../../index.view.php">
+            <button class="button" type="submit">
+                <span class="button__shadow"></span>
+                <span class="button__edge"></span>
+                <span class="button__front">← Go Back</span>
+            </button>
+        </a>
+    </nav>
+
     <main class="course-main | content-column grid-auto-fit">
         <section class="flow">
-            <!-- <?php echo $course_info["title"]; ?> -->
-            <h1 class="fw-bold fs-semilarge">Software Technology (4483)</h1>
+
+            <h1 class="fw-bold fs-semilarge"><?= $course_info["title"] . " " . $course_info["id"]; ?> </h1>
 
             <h2 class="visually-hidden">Unit details</h2>
 
-            <div class="inline-block">★★★★★</div>
-            <p class="inline-block">80 Reviews</p>
+            <div class="star-rating" style="--rating: <?= $course_derived_info['avg_rating'] ?>;" aria-label="Rating of this product is <?= $course_derived_info['avg_rating'] ?> out of 5."></div>
+            <p class="inline-block"><?= $course_derived_info["review_count"] ?></p>
 
             <div class="flexbox-grid | min-auto">
                 <div class="rating">
                     <div class="rating__circle">
-                        <span class="rating__value">4.8</span>
+                        <span class="rating__value"><?= $course_derived_info["avg_enjoyability"] ?></span>
                     </div>
-                    <p class="rating__label">Enjoyment</p>
+                    <p class="rating__label">Enjoyability</p>
                 </div>
 
                 <div class="rating">
                     <div class="rating__circle">
-                        <span class="rating__value">4.8</span>
+                        <span class="rating__value"><?= $course_derived_info["avg_usefulness"] ?></span>
                     </div>
                     <p class="rating__label">Usefulness</p>
                 </div>
 
                 <div class="rating">
                     <div class="rating__circle">
-                        <span class="rating__value">4.8</span>
+                        <span class="rating__value"><?= $course_derived_info["avg_manageability"] ?></span>
                     </div>
                     <p class="rating__label">Manageability</p>
                 </div>
@@ -53,18 +63,17 @@
             <h3 class="fw-bold fs-medium">Description</h3>
 
             <p>
-                An introduction to problem-solving via programming, which aims to have students develop 
-                proficiency in using a high level programming language. Topics: algorithms, program 
-                structures (statements, sequence, selection, iteration, functions), data types (numeric,
-                character), data structures (arrays, tuples, pointers, lists), storage structures 
-                (memory, addresses), introduction to analysis of algorithms, testing, code quality, 
-                teamwork, and reflective practice. The course includes extensive practical work in labs
-                and programming projects. Additional Information
+                <?= $course_info["description"]; ?>
             </p>
 
             <h3 class="fw-bold fs-medium">Write A Review</h3>
 
             <form class="review-form" action="" method="post">
+                <div>
+                    <label for="terms">I understand not to be a dick</label>
+                    <input type="checkbox" name="terms" id="terms">
+                </div>
+
                 <input class="review-form__input" type="text" name="" id="" placeholder="Title">
 
                 <textarea class="review-form__textarea" name="" id="" placeholder="What was your experience? How difficult, enjoyable, and useful was this course for you?"></textarea>
@@ -76,7 +85,7 @@
                 </div>
 
                 <div class="review-form__slider-group">
-                    <label class="fw-bold" for="enjoyment">Enjoyment:</label>
+                    <label class="fw-bold" for="enjoyment">Enjoyability:</label>
                     <input class="review-form__slider" type="range" name="enjoyment" id="enjoyment" min="0" max="5" placeholder="0" oninput="this.nextElementSibling.value = this.value">
                     <output for="enjoyment">3</output>
                 </div>
@@ -99,8 +108,8 @@
                 </div>
 
                 <div class="review-form__input-group">
-                    <label class="fw-bold" for="completion">Grade:</label>
-                    <input class="review-form__input" type="number" name="completion" id="completion" min="0" max="100" value="50">
+                    <label class="fw-bold" for="grade">Grade:</label>
+                    <input class="review-form__input" type="number" name="grade" id="completion" min="0" max="100" value="50">
                 </div>
 
                 <button class="button" type="submit">
@@ -115,54 +124,54 @@
         <section>
             <h2 class="fw-bold fs-extramedium">Reviews</h2>  
 
-            <article class="review | flow">
-                <h3 class="review__title">Poggers</h3>
+            <?php foreach ($course_reviews as $review): ?>
+                <article class="review | flow">
+                    <h3 class="review__title"><?= $review['title'] ?></h3>
 
-                <div>
-                    <p class="inline-block">Overall rating:</p>
-                    <div class="inline-block">★★★★★</div>
-                </div>
-
-                <p class="review__body"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos, 
-                    voluptas non esse quam et enim consectetur qui excepturi id optio quo pariatur 
-                    inventore facere quia repellat cupiditate quaerat in libero?
-                </p>
-
-                <div class="flexbox-grid | min-auto">
-                    <div class="rating">
-                        <div class="rating__circle">
-                            <span class="rating__value">4.8</span>
-                        </div>
-                        <p class="rating__label">Enjoyment</p>
-                    </div>
-    
-                    <div class="rating">
-                        <div class="rating__circle">
-                            <span class="rating__value">4.8</span>
-                        </div>
-                        <p class="rating__label">Usefulness</p>
-                    </div>
-    
-                    <div class="rating">
-                        <div class="rating__circle">
-                            <span class="rating__value">4.8</span>
-                        </div>
-                        <p class="rating__label">Manageability</p>
-                    </div>
-                </div>
-
-                <div class="flexbox-grid | min-auto txt-center">
                     <div>
-                        <p class="inline-block fw-bold">Term taken:</p>
-                        <div class="inline-block">2023 S1</div>
+                        <p class="inline-block">Overall rating:</p>
+                        <div class="star-rating" style="--rating: <?= $review['rating'] ?>;" aria-label="Rating of this product is <?= $course_derived_info['avg_rating'] ?> out of 5."></div>
                     </div>
-    
-                    <div>
-                        <p class="inline-block fw-bold">Grade:</p>
-                        <div class="inline-block">92</div>
+
+                    <p class="review__body"><?= $review['text'] ?></p>
+
+                    <div class="flexbox-grid | min-auto">
+                        <div class="rating">
+                            <div class="rating__circle">
+                                <span class="rating__value"><?= $review['enjoyability'] ?></span>
+                            </div>
+                            <p class="rating__label">Enjoyment</p>
+                        </div>
+        
+                        <div class="rating">
+                            <div class="rating__circle">
+                                <span class="rating__value"><?= $review['usefulness'] ?></span>
+                            </div>
+                            <p class="rating__label">Usefulness</p>
+                        </div>
+        
+                        <div class="rating">
+                            <div class="rating__circle">
+                                <span class="rating__value"><?= $review['manageability'] ?></span>
+                            </div>
+                            <p class="rating__label">Manageability</p>
+                        </div>
                     </div>
-                </div>
-            </article>
+
+                    <div class="flexbox-grid | min-auto txt-center">
+                        <div>
+                            <p class="inline-block fw-bold">Term taken:</p>
+                            <div class="inline-block"><?= $review['completion'] ?></div>
+                        </div>
+        
+                        <div>
+                            <p class="inline-block fw-bold">Grade:</p>
+                            <div class="inline-block"><?= $review['grade'] ?></div>
+                        </div>
+                    </div>
+                </article>
+            <?php endforeach; ?>
+
         </section>
     </main>
 </body>

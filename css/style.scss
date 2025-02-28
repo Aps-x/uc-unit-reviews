@@ -2,13 +2,15 @@
 Abstract
 ========================================================================== */
 :root {
-    --clr-cream:  hsl(34, 100%, 95%);
-    --clr-red:    hsl(6, 71%, 59%);
-    --clr-yellow: hsl(39, 100%, 75%);
-    --clr-dark-1: hsl(50, 6%, 20%);
-    --clr-dark-2: hsl(48, 5%, 15%);
-    --clr-white:  hsl(0, 0%, 100%);
-    --clr-black:  hsl(260, 7%, 8%);
+    --clr-white:       hsl(0, 0%, 100%);
+    --clr-black:       hsl(260, 7%, 8%);
+    --clr-cream:       hsl(34, 100%, 95%);
+    --clr-red:         hsl(6, 71%, 59%);
+    --clr-yellow:      hsl(39, 100%, 75%);
+    --clr-yellow-dark: hsl(39, 100%, 60%);
+    --clr-gray-light:  hsl(0, 0%, 65%);
+    --clr-gray:        hsl(50, 6%, 20%);
+    --clr-gray-dark:   hsl(48, 5%, 15%);
 
     --ff-regular: "League Spartan", sans-serif;
     --ff-accent:  "", serif;
@@ -50,8 +52,8 @@ $sizes: (
 @mixin retro-window($shadow-size: 10px) {
     border-radius: 12px;
     border-style: solid;
-    border-color: var(--clr-dark-2);
-    box-shadow: $shadow-size $shadow-size 0px 0px var(--clr-dark-2);
+    border-color: var(--clr-gray-dark);
+    box-shadow: $shadow-size $shadow-size 0px 0px var(--clr-gray-dark);
     background-color: var(--clr-cream);
 }
 /* ==========================================================================
@@ -97,6 +99,9 @@ p {
 a {
     text-decoration: none;
     color: unset;
+}
+input {
+    accent-color: var(--clr-yellow);
 }
 a:hover {
     color: var(--clr-red);
@@ -154,6 +159,26 @@ Components
         display: grid;
         grid-template-columns: 1fr auto;
         gap: 1rem;
+    }
+}
+.star-rating {
+    --star-size: 25px;
+    --star-color: var(--clr-gray-light);
+    --star-background: var(--clr-yellow-dark);
+    --percent: calc(var(--rating) / 5 * 100%);
+
+    display: inline-block;
+    font-size: var(--star-size);
+    font-family: Times; 
+    line-height: 1;
+
+    &::before {
+      content: '★★★★★';
+      letter-spacing: 3px;
+      background: linear-gradient(90deg, var(--star-background) var(--percent), var(--star-color) var(--percent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      vertical-align: text-bottom;
     }
 }
 .rating {
@@ -222,14 +247,19 @@ Components
 }
 .search {
     padding: 1rem;
-    color: var(--clr-dark-1);
+    color: var(--clr-gray);
     @include retro-window(6px);
 }
 .dropdown {
     padding: 1rem;
-    color: var(--clr-dark-1);
+    color: var(--clr-gray);
     font-weight: var(--fw-bold);
     @include retro-window(6px);
+}
+.top-nav {
+    position: absolute;
+    top: 0.35rem;
+    left: 1.75rem;
 }
 .footer {
     text-align: center;
@@ -279,7 +309,7 @@ Components
         padding: 0.75rem 2rem;
         border-radius: 0.75rem;
         font-weight: var(--fw-bold);
-        color: var(--clr-dark-2);
+        color: var(--clr-gray-dark);
         background: var(--clr-yellow);
         will-change: transform;
         transform: translateY(-4px);
@@ -375,7 +405,23 @@ Pages
         --gap: 2rem;
         margin-block: 5rem;
         padding: 2rem;
-        @include retro-window(14px)
+        @include retro-window(14px);
+    }
+}
+.four-zero-four {
+    background-image: url("../images/blob_yellow.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: var(--clr-cream);
+    display: grid;
+    place-content: center;
+    &-header {
+        --max-width: 1200px;
+        height: 500px;
+        display: grid;
+	    align-content: center;
+        text-align: center;
+        @include retro-window(14px);
     }
 }
 /* ==========================================================================
