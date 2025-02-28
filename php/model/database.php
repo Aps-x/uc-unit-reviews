@@ -1,5 +1,13 @@
 <?php
 
+// TODO: 
+// Remove Debug_To_Console before production
+//
+// I don't think I need the rounds() - add limits to DB
+//
+// Handle cases where there are no reviews in Get_Derived_Course_Info_Array()
+
+
 $conn = "";
 
 $db_server = "localhost";
@@ -71,7 +79,6 @@ function Get_Course_Info_Array($conn, $course_id) {
     ];
 }
 
-// TODO: Handle cases where there are no reviews
 function Get_Derived_Course_Info_Array($conn, $course_id) {
     $stmt = $conn->prepare("
         SELECT 
@@ -142,7 +149,6 @@ function Get_Course_Reviews($conn, $course_id) {
     return $reviews;
 }
 
-// TODO: Remove before production
 function Debug_To_Console($data) {
     $output = $data;
     if (is_array($output))

@@ -220,7 +220,6 @@ Components
 }
 .review-form__slider {
   vertical-align: middle;
-  accent-color: var(--clr-yellow);
   min-width: 0;
 }
 .review-form__slider-group {

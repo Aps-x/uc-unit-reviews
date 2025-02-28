@@ -34,27 +34,27 @@
 
             <h2 class="visually-hidden">Unit details</h2>
 
-            <div class="star-rating" style="--rating: <?= $course_derived_info['avg_rating'] ?>;" aria-label="Rating of this product is <?= $course_derived_info['avg_rating'] ?> out of 5."></div>
-            <p class="inline-block"><?= $course_derived_info["review_count"] ?></p>
+            <div class="star-rating" style="--rating: <?= $derived_course_info['avg_rating'] ?>;" aria-label="Rating of this product is <?= $course_derived_info['avg_rating'] ?> out of 5."></div>
+            <p class="inline-block"><?= $derived_course_info["review_count"] ?></p>
 
             <div class="flexbox-grid | min-auto">
                 <div class="rating">
                     <div class="rating__circle">
-                        <span class="rating__value"><?= $course_derived_info["avg_enjoyability"] ?></span>
+                        <span class="rating__value"><?= $derived_course_info["avg_enjoyability"] ?></span>
                     </div>
                     <p class="rating__label">Enjoyability</p>
                 </div>
 
                 <div class="rating">
                     <div class="rating__circle">
-                        <span class="rating__value"><?= $course_derived_info["avg_usefulness"] ?></span>
+                        <span class="rating__value"><?= $derived_course_info["avg_usefulness"] ?></span>
                     </div>
                     <p class="rating__label">Usefulness</p>
                 </div>
 
                 <div class="rating">
                     <div class="rating__circle">
-                        <span class="rating__value"><?= $course_derived_info["avg_manageability"] ?></span>
+                        <span class="rating__value"><?= $derived_course_info["avg_manageability"] ?></span>
                     </div>
                     <p class="rating__label">Manageability</p>
                 </div>

@@ -50,7 +50,7 @@
 
                 <?php foreach ($courses_list as $course): ?>
                     <?php 
-                        $course_derived_info = Get_Derived_Course_Info_Array($conn, $course['id']); 
+                        $derived_course_info = Get_Derived_Course_Info_Array($conn, $course['id']); 
                     ?>
                     <article class="card">
                         <a href="php/views/course.view.php?course=<?= urlencode($course['id']) ?>" class="flow">
@@ -58,8 +58,8 @@
                                 <h3 class="card__title"><?= $course['title'] ?> (<?= $course['id'] ?>)</h3>
 
                                 <div>
-                                    <div class="star-rating" style="--rating: <?= $course_derived_info['avg_rating'] ?>;" aria-label="Rating of this product is <?= $course_derived_info['avg_rating'] ?> out of 5."></div>
-                                    <p class="txt-right"><?= $course_derived_info['review_count'] ?> Reviews</p>
+                                    <div class="star-rating" style="--rating: <?= $derived_course_info['avg_rating'] ?>;" aria-label="Rating of this product is <?= $derived_course_info['avg_rating'] ?> out of 5."></div>
+                                    <p class="txt-right"><?= $derived_course_info['review_count'] ?> Reviews</p>
                                 </div>
                             </header>
                             

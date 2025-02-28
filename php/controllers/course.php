@@ -15,7 +15,7 @@ if (isset($_GET['course'])) {
 
     // Dynamic Data
     $course_info = Get_Course_Info_Array($conn, $course_id);
-    $course_derived_info = Get_Derived_Course_Info_Array($conn, $course_id);
+    $derived_course_info = Get_Derived_Course_Info_Array($conn, $course_id);
     $course_reviews = Get_Course_Reviews($conn, $course_id);
 }
 else {
