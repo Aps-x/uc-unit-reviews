@@ -47,7 +47,6 @@
             <h2 class="visually-hidden">Units</h2>
 
             <div class="home-grid | grid-auto-fill">
-
                 <?php foreach ($courses_list as $course): ?>
                     <?php 
                         $derived_course_info = Get_Derived_Course_Info_Array($conn, $course['id']); 
@@ -67,7 +66,6 @@
                         </a>
                     </article>
                 <?php endforeach; ?>
-
             </div>
         </section>
     </main>

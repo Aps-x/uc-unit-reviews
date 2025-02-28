@@ -1,13 +1,7 @@
 <?php
-
-// TODO: 
-// Remove Debug_To_Console before production
-//
-// I don't think I need the rounds() - add limits to DB
-//
-// Handle cases where there are no reviews in Get_Derived_Course_Info_Array()
-
-
+/* ==========================================================================
+Initialization
+========================================================================== */
 $conn = "";
 
 $db_server = "localhost";
@@ -15,17 +9,16 @@ $db_user = "root";
 $db_pass = "";
 $db_name = "uc_unit_reviews_db";
 
-try {
+try {   
     $conn = mysqli_connect($db_server, $db_user, $db_pass, $db_name);
 }
 catch(mysqli_sql_exception) {
-    debug_to_console("Unable to connect");
+    Show_503();
 }
 
-if ($conn) {
-    debug_to_console("Connection established");
-}
-
+/* ==========================================================================
+Functions
+========================================================================== */
 function Get_All_Courses_Array($conn) {
     $result = mysqli_query($conn, "SELECT * FROM course");
 
@@ -98,9 +91,6 @@ function Get_Derived_Course_Info_Array($conn, $course_id) {
     $row = $result->fetch_assoc();
 
     if (!$row || $row['review_count'] == 0) {
-
-        Debug_To_Console("No reviews found");
-
         return [
             'avg_rating' => 0,
             'avg_enjoyability' => 0,
@@ -126,7 +116,6 @@ function Get_Course_Reviews($conn, $course_id) {
     $result = $stmt->get_result();
 
     if ($result->num_rows == 0) {
-        Debug_To_Console("No reviews found");
         return [];
     }
 
@@ -149,10 +138,19 @@ function Get_Course_Reviews($conn, $course_id) {
     return $reviews;
 }
 
-function Debug_To_Console($data) {
-    $output = $data;
-    if (is_array($output))
-        $output = implode(',', $output);
+function Save_Review_To_Database($course_id, $title, $text, $rating, $enjoyability, $usefulness, 
+                                    $manageability, $grade, $completion, $conn) {
+    $stmt = $conn->prepare("INSERT INTO review (CourseID, Title, Text, Rating, Enjoyability, Usefulness, Manageability, Grade, Completion) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("issiiiiis", $course_id, $title, $text, $rating, $enjoyability, $usefulness, $manageability, $grade, $completion);
+    $stmt->execute();
+    $stmt->close();
+}
 
-    echo "<script>console.log('Log: " . $output . "' );</script> \n";
+/* ==========================================================================
+503 :: Couldn't connect to Database
+========================================================================== */
+function Show_503() {
+    http_response_code(503);
+    include '../views/503.html'; 
+    exit(); 
 }

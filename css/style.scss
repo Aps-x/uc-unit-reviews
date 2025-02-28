@@ -396,6 +396,7 @@ Pages
     background-image: url("../images/blob_yellow.svg");
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
     background-color: var(--clr-cream);
     &-main {
         --max-width: 1400px;
@@ -407,7 +408,7 @@ Pages
         @include retro-window(14px);
     }
 }
-.four-zero-four {
+.error-page {
     background-image: url("../images/blob_yellow.svg");
     background-repeat: no-repeat;
     background-size: cover;

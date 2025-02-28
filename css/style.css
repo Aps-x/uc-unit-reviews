@@ -400,6 +400,7 @@ Pages
   background-image: url("../images/blob_yellow.svg");
   background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
   background-color: var(--clr-cream);
 }
 .course-main {
@@ -416,7 +417,7 @@ Pages
   background-color: var(--clr-cream);
 }
 
-.four-zero-four {
+.error-page {
   background-image: url("../images/blob_yellow.svg");
   background-repeat: no-repeat;
   background-size: cover;
@@ -424,7 +425,7 @@ Pages
   display: grid;
   place-content: center;
 }
-.four-zero-four-header {
+.error-page-header {
   --max-width: 1200px;
   height: 500px;
   display: grid;

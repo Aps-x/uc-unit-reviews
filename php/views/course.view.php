@@ -18,12 +18,10 @@
     <div class="texture"></div>
 
     <nav class="top-nav">
-        <a href="../../index.view.php">
-            <button class="button" type="submit">
-                <span class="button__shadow"></span>
-                <span class="button__edge"></span>
-                <span class="button__front">← Go Back</span>
-            </button>
+        <a href="../../index.view.php" class="button">
+            <span class="button__shadow"></span>
+            <span class="button__edge"></span>
+            <span class="button__front">← Go Back</span>
         </a>
     </nav>
 
@@ -69,14 +67,11 @@
             <h3 class="fw-bold fs-medium">Write A Review</h3>
 
             <form class="review-form" action="" method="post">
-                <div>
-                    <label for="terms">I understand not to be a dick</label>
-                    <input type="checkbox" name="terms" id="terms">
-                </div>
+                <label class="visually-hidden" for="title">Title your review:</label>
+                <input class="review-form__input" type="text" name="title" id="title" placeholder="Title">
 
-                <input class="review-form__input" type="text" name="" id="" placeholder="Title">
-
-                <textarea class="review-form__textarea" name="" id="" placeholder="What was your experience? How difficult, enjoyable, and useful was this course for you?"></textarea>
+                <label class="visually-hidden" for="text">Write your review:</label>
+                <textarea class="review-form__textarea" name="text" id="text" placeholder="What was your experience? How difficult, enjoyable, and useful was this course for you?"></textarea>
 
                 <div class="review-form__slider-group">
                     <label class="fw-bold" for="rating">Overall Rating:</label>
@@ -85,8 +80,8 @@
                 </div>
 
                 <div class="review-form__slider-group">
-                    <label class="fw-bold" for="enjoyment">Enjoyability:</label>
-                    <input class="review-form__slider" type="range" name="enjoyment" id="enjoyment" min="0" max="5" placeholder="0" oninput="this.nextElementSibling.value = this.value">
+                    <label class="fw-bold" for="enjoyability">Enjoyability:</label>
+                    <input class="review-form__slider" type="range" name="enjoyability" id="enjoyability" min="0" max="5" placeholder="0" oninput="this.nextElementSibling.value = this.value">
                     <output for="enjoyment">3</output>
                 </div>
 
@@ -109,10 +104,10 @@
 
                 <div class="review-form__input-group">
                     <label class="fw-bold" for="grade">Grade:</label>
-                    <input class="review-form__input" type="number" name="grade" id="completion" min="0" max="100" value="50">
+                    <input class="review-form__input" type="number" name="grade" id="grade" min="0" max="100" value="50">
                 </div>
 
-                <button class="button" type="submit">
+                <button class="button" name="review" type="submit" method="POST">
                     <span class="button__shadow"></span>
                     <span class="button__edge"></span>
                     <span class="button__front">Submit</span>
@@ -129,7 +124,7 @@
                     <h3 class="review__title"><?= $review['title'] ?></h3>
 
                     <div>
-                        <p class="inline-block">Overall rating:</p>
+                        <p class="inline-block fw-bold">Overall rating:</p>
                         <div class="star-rating" style="--rating: <?= $review['rating'] ?>;" aria-label="Rating of this product is <?= $course_derived_info['avg_rating'] ?> out of 5."></div>
                     </div>
 
