@@ -69,6 +69,7 @@
     </main>
 
     <footer class="footer">
+        <p>This project is unofficial and is not affiliated or endorsed in any way by the University of Canberra</p>
         <a href="https://github.com/Aps-x/uc-unit-reviews">This project is open source</a>
     </footer>
 </body>
