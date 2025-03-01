@@ -134,15 +134,24 @@ Components
   box-shadow: 10px 10px 0px 0px var(--clr-gray-dark);
   background-color: var(--clr-cream);
   padding: 1rem;
+  container: card/inline-size;
 }
 .card__title {
   font-weight: var(--fw-bold);
   font-size: var(--fs-semi-medium);
+  text-align: left;
 }
 .card__header {
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 1rem;
+  text-align: right;
+}
+@container card (inline-size < 300px) {
+  .card__header {
+    grid-template-columns: 1fr;
+    text-align: left;
+  }
 }
 
 .star-rating {
@@ -237,6 +246,7 @@ Components
 .search {
   padding: 1rem;
   color: var(--clr-gray);
+  width: 100%;
   border-radius: 12px;
   border-style: solid;
   border-color: var(--clr-gray-dark);
@@ -248,6 +258,7 @@ Components
   padding: 1rem;
   color: var(--clr-gray);
   font-weight: var(--fw-bold);
+  width: 100%;
   border-radius: 12px;
   border-style: solid;
   border-color: var(--clr-gray-dark);
@@ -377,7 +388,7 @@ Pages
 }
 .home-main {
   --max-width: 1400px;
-  --gutter: 2rem;
+  --gutter: 1rem;
   container: home-main/inline-size;
 }
 .home-controls {
@@ -405,11 +416,11 @@ Pages
 }
 .course-main {
   --max-width: 1400px;
-  --gutter: 1rem;
+  --gutter: 0rem;
   --min: 350px;
   --gap: 2rem;
   margin-block: 5rem;
-  padding: 2rem;
+  padding: clamp(1rem, 5%, 2rem);
   border-radius: 12px;
   border-style: solid;
   border-color: var(--clr-gray-dark);
