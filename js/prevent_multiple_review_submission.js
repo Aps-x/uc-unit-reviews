@@ -12,7 +12,6 @@ const COURSE_ID = SUBMIT_BUTTON.dataset.course;
 Event Listeners
 ========================================================================== */
 SUBMIT_BUTTON.addEventListener("click", function() {
-    SUBMIT_BUTTON.disabled = true;
     Add_Course_To_Reviewed_List(COURSE_ID);
 });
 
