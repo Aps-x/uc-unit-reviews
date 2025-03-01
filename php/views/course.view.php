@@ -13,6 +13,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
+
+    <script src="../../js/prevent_multiple_review_submission.js" defer></script>
 </head>
 <body class="course">
     <div class="texture"></div>
@@ -28,7 +30,7 @@
     <main class="course-main | content-column grid-auto-fit">
         <section class="flow">
 
-            <h1 class="fw-bold fs-semilarge"><?= $course_info["title"] . " " . $course_info["id"]; ?> </h1>
+            <h1 class="fw-bold fs-semilarge"><?= $course_info["title"] . "" . $course_info["id"]; ?> </h1>
 
             <h2 class="visually-hidden">Unit details</h2>
 
@@ -64,7 +66,7 @@
 
             <h3 class="fw-bold fs-medium">Write A Review</h3>
 
-            <form class="review-form" method="post">
+            <form class="review-form" method="post" id="review_form">
                 <label class="visually-hidden" for="title">Title your review:</label>
                 <input class="review-form__input" type="text" name="title" id="title" placeholder="Title">
 
@@ -105,7 +107,7 @@
                     <input class="review-form__input" type="number" name="grade" id="grade" min="0" max="100" value="50">
                 </div>
 
-                <button class="button" name="review" type="submit">
+                <button class="button" id="submit" name="review" type="submit" data-course="<?= $course_info["id"]; ?>">
                     <span class="button__shadow"></span>
                     <span class="button__edge"></span>
                     <span class="button__front">Submit</span>

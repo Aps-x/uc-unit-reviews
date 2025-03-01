@@ -407,6 +407,19 @@ Pages
   --min: 310px;
   --gap: 4rem;
 }
+.home-grid:not(:has(.card:not(.is-hidden)))::after {
+  content: "No courses were found";
+  display: block;
+  grid-column: 1/-1;
+  text-align: center;
+  color: var(--clr-red);
+  font-size: var(--fs-medium);
+  font-weight: var(--fw-bold);
+}
+.home-grid:has(.card:not(.is-hidden))::after {
+  content: "";
+  display: none;
+}
 
 .course {
   background-image: url("../images/blob_yellow.svg");

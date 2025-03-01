@@ -25,7 +25,7 @@ Form Submission
 ========================================================================== */
 if (isset($_POST['review'])) {
     function sanitize_input($data) {
-        return htmlspecialchars(strip_tags(trim($data)), ENT_QUOTES, 'UTF-8');
+        return trim(strip_tags($data)); 
     }
 
     // Sanitize user input

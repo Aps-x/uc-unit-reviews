@@ -400,6 +400,21 @@ Pages
     &-grid {
         --min: 310px;
         --gap: 4rem;
+        // The grid has no cards that aren't hidden
+        &:not(:has(.card:not(.is-hidden)))::after {
+            content: "No courses were found";
+            display: block;
+            grid-column: 1 / -1;
+            text-align: center;
+            color: var(--clr-red);
+            font-size: var(--fs-medium);
+            font-weight: var(--fw-bold);
+        }
+        // The grid has at least one card not hidden
+        &:has(.card:not(.is-hidden))::after {
+            content: "";
+            display: none; 
+        }
     }
 }
 .course {
