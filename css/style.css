@@ -383,6 +383,7 @@ Pages
   background-image: url("../images/blob_yellow.svg");
   background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
   background-color: var(--clr-cream);
   padding-block: 2rem;
 }
@@ -403,8 +404,8 @@ Pages
   }
 }
 .home-grid {
-  --min: 350px;
-  --gap: 2rem;
+  --min: 310px;
+  --gap: 4rem;
 }
 
 .course {
