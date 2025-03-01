@@ -32,7 +32,7 @@
 
             <h2 class="visually-hidden">Unit details</h2>
 
-            <div class="star-rating" style="--rating: <?= $derived_course_info['avg_rating'] ?>;" aria-label="Rating of this product is <?= $course_derived_info['avg_rating'] ?> out of 5."></div>
+            <div class="star-rating" style="--rating: <?= $derived_course_info['avg_rating'] ?>;" aria-label="Rating of this product is <?= $derived_course_info['avg_rating'] ?> out of 5."></div>
             <p class="inline-block"><?= $derived_course_info["review_count"] ?></p>
 
             <div class="flexbox-grid | min-auto">
@@ -60,13 +60,11 @@
             
             <h3 class="fw-bold fs-medium">Description</h3>
 
-            <p>
-                <?= $course_info["description"]; ?>
-            </p>
+            <p><?= $course_info["description"]; ?></p>
 
             <h3 class="fw-bold fs-medium">Write A Review</h3>
 
-            <form class="review-form" action="" method="post">
+            <form class="review-form" method="post">
                 <label class="visually-hidden" for="title">Title your review:</label>
                 <input class="review-form__input" type="text" name="title" id="title" placeholder="Title">
 
@@ -75,25 +73,25 @@
 
                 <div class="review-form__slider-group">
                     <label class="fw-bold" for="rating">Overall Rating:</label>
-                    <input class="review-form__slider" type="range" name="rating" id="rating" min="0" max="5" placeholder="0" oninput="this.nextElementSibling.value = this.value">
+                    <input class="review-form__slider" type="range" name="rating" id="rating" min="0" max="5" oninput="this.nextElementSibling.value = this.value">
                     <output for="rating">3</output>
                 </div>
 
                 <div class="review-form__slider-group">
                     <label class="fw-bold" for="enjoyability">Enjoyability:</label>
-                    <input class="review-form__slider" type="range" name="enjoyability" id="enjoyability" min="0" max="5" placeholder="0" oninput="this.nextElementSibling.value = this.value">
+                    <input class="review-form__slider" type="range" name="enjoyability" id="enjoyability" min="0" max="5" oninput="this.nextElementSibling.value = this.value">
                     <output for="enjoyment">3</output>
                 </div>
 
                 <div class="review-form__slider-group">
                     <label class="fw-bold" for="usefulness">Usefulness:</label>
-                    <input class="review-form__slider" type="range" name="usefulness" id="usefulness" min="0" max="5" placeholder="0" oninput="this.nextElementSibling.value = this.value">
+                    <input class="review-form__slider" type="range" name="usefulness" id="usefulness" min="0" max="5" oninput="this.nextElementSibling.value = this.value">
                     <output for="usefulness">3</output>
                 </div>
 
                 <div class="review-form__slider-group">
                     <label class="fw-bold" for="manageability">Manageability:</label>
-                    <input class="review-form__slider" type="range" name="manageability" id="manageability" min="0" max="5" placeholder="0" oninput="this.nextElementSibling.value = this.value">
+                    <input class="review-form__slider" type="range" name="manageability" id="manageability" min="0" max="5" oninput="this.nextElementSibling.value = this.value">
                     <output for="manageability">3</output>
                 </div>
 
@@ -107,7 +105,7 @@
                     <input class="review-form__input" type="number" name="grade" id="grade" min="0" max="100" value="50">
                 </div>
 
-                <button class="button" name="review" type="submit" method="POST">
+                <button class="button" name="review" type="submit">
                     <span class="button__shadow"></span>
                     <span class="button__edge"></span>
                     <span class="button__front">Submit</span>
@@ -118,14 +116,13 @@
 
         <section>
             <h2 class="fw-bold fs-extramedium">Reviews</h2>  
-
             <?php foreach ($course_reviews as $review): ?>
                 <article class="review | flow">
                     <h3 class="review__title"><?= $review['title'] ?></h3>
 
                     <div>
                         <p class="inline-block fw-bold">Overall rating:</p>
-                        <div class="star-rating" style="--rating: <?= $review['rating'] ?>;" aria-label="Rating of this product is <?= $course_derived_info['avg_rating'] ?> out of 5."></div>
+                        <div class="star-rating" style="--rating: <?= $review['rating'] ?>;" aria-label="Rating of this product is <?= $derived_course_info['avg_rating'] ?> out of 5."></div>
                     </div>
 
                     <p class="review__body"><?= $review['text'] ?></p>
@@ -153,20 +150,12 @@
                         </div>
                     </div>
 
-                    <div class="flexbox-grid | min-auto txt-center">
-                        <div>
-                            <p class="inline-block fw-bold">Term taken:</p>
-                            <div class="inline-block"><?= $review['completion'] ?></div>
-                        </div>
-        
-                        <div>
-                            <p class="inline-block fw-bold">Grade:</p>
-                            <div class="inline-block"><?= $review['grade'] ?></div>
-                        </div>
+                    <div class="flexbox-grid | min-auto txt-center fw-bold">
+                        <p>Term taken: <span class="fw-regular"><?= $review['completion'] ?></span></p>
+                        <p >Grade: <span class="fw-regular"><?= $review['grade'] ?></span></p>
                     </div>
                 </article>
             <?php endforeach; ?>
-
         </section>
     </main>
 </body>

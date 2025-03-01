@@ -2,34 +2,34 @@
 /* ==========================================================================
 Constants, Variables, Data
 ========================================================================== */
-const cards = document.querySelectorAll(".card");
-const search = document.getElementById("search");
+const CARDS = document.querySelectorAll(".card");
+const SEARCH = document.getElementById("search");
 
-const search_timeout_interval = 500;  
+const SEARCH_TIMEOUT_INTERVAL = 500;  
 let timer;               
 
 /* ==========================================================================
 Event Listeners
 ========================================================================== */
-search.addEventListener("keyup", () => {
+SEARCH.addEventListener("keyup", () => {
     clearTimeout(timer);
-    timer = setTimeout(Live_Search, search_timeout_interval);
+    timer = setTimeout(Live_Search, SEARCH_TIMEOUT_INTERVAL);
 });
 
 /* ==========================================================================
 Functions
 ========================================================================== */
 function Live_Search() {
-    const search_query = search.value.toLowerCase();
+    const search_query = SEARCH.value.toLowerCase();
 
-    for (let i = 0; i < cards.length; i++) {
-        const title = cards[i].querySelector(".card__title").textContent.toLowerCase();
+    for (let i = 0; i < CARDS.length; i++) {
+        const title = CARDS[i].querySelector(".card__title").textContent.toLowerCase();
 
         if (title.includes(search_query)) {
-            cards[i].classList.remove("is-hidden");
+            CARDS[i].classList.remove("is-hidden");
         } 
         else {
-            cards[i].classList.add("is-hidden");
+            CARDS[i].classList.add("is-hidden");
         }
     }
 }

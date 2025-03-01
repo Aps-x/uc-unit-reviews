@@ -38,11 +38,6 @@ function Get_All_Courses_Array($conn) {
 function Does_Course_Exist($conn, $course_id) {
     $sql = "SELECT 1 FROM course WHERE ID = ? LIMIT 1";
     $stmt = $conn->prepare($sql);
-    
-    if (!$stmt) {
-        return false;
-    }
-
     $stmt->bind_param("i", $course_id);
     $stmt->execute();
     $stmt->store_result();
@@ -50,13 +45,12 @@ function Does_Course_Exist($conn, $course_id) {
     $exists = $stmt->num_rows > 0;
     
     $stmt->close();
-    
     return $exists;
 }
 
 function Get_Course_Info_Array($conn, $course_id) {
     $stmt = $conn->prepare("SELECT * FROM course WHERE id = ?");
-    $stmt->bind_param("s", $course_id);
+    $stmt->bind_param("i", $course_id);
     $stmt->execute();
     $result = $stmt->get_result();
     $row = $result->fetch_assoc();
@@ -84,7 +78,7 @@ function Get_Derived_Course_Info_Array($conn, $course_id) {
         WHERE CourseID = ?
     ");
 
-    $stmt->bind_param("s", $course_id);
+    $stmt->bind_param("i", $course_id);
     $stmt->execute();
 
     $result = $stmt->get_result();
@@ -111,7 +105,7 @@ function Get_Derived_Course_Info_Array($conn, $course_id) {
 
 function Get_Course_Reviews($conn, $course_id) {
     $stmt = $conn->prepare("SELECT * FROM review WHERE CourseID = ?");
-    $stmt->bind_param("s", $course_id);
+    $stmt->bind_param("i", $course_id);
     $stmt->execute();
     $result = $stmt->get_result();
 
@@ -140,8 +134,13 @@ function Get_Course_Reviews($conn, $course_id) {
 
 function Save_Review_To_Database($course_id, $title, $text, $rating, $enjoyability, $usefulness, 
                                     $manageability, $grade, $completion, $conn) {
-    $stmt = $conn->prepare("INSERT INTO review (CourseID, Title, Text, Rating, Enjoyability, Usefulness, Manageability, Grade, Completion) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("issiiiiis", $course_id, $title, $text, $rating, $enjoyability, $usefulness, $manageability, $grade, $completion);
+
+    $stmt = $conn->prepare("INSERT INTO review (CourseID, Title, Text, Rating, Enjoyability, Usefulness, 
+                            Manageability, Grade, Completion) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+
+    $stmt->bind_param("issiiiiis", $course_id, $title, $text, $rating, $enjoyability, $usefulness, 
+                        $manageability, $grade, $completion);
+                        
     $stmt->execute();
     $stmt->close();
 }

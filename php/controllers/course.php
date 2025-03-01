@@ -9,7 +9,7 @@ if (isset($_GET['course'])) {
     if (!ctype_digit($course_id)) {
         Show_404();
     }
-    if (Does_Course_Exist($conn, $course_id) === false) {
+    if (Does_Course_Exist($conn, $course_id) == false) {
         Show_404();
     } 
 
@@ -32,9 +32,11 @@ if (isset($_POST['review'])) {
     $title = sanitize_input($_POST['title'] ?? '');
     $text = sanitize_input($_POST['text'] ?? '');
     $rating = filter_var($_POST['rating'] ?? 0, FILTER_SANITIZE_NUMBER_INT);
+
     $enjoyability = filter_var($_POST['enjoyability'] ?? 0, FILTER_SANITIZE_NUMBER_INT);
     $usefulness = filter_var($_POST['usefulness'] ?? 0, FILTER_SANITIZE_NUMBER_INT);
     $manageability = filter_var($_POST['manageability'] ?? 0, FILTER_SANITIZE_NUMBER_INT);
+    
     $grade = filter_var($_POST['grade'] ?? 0, FILTER_SANITIZE_NUMBER_INT);
     $completion = sanitize_input($_POST['completion'] ?? '');
     
@@ -48,6 +50,7 @@ if (isset($_POST['review'])) {
     Save_Review_To_Database($course_id, $title, $text, $rating, $enjoyability, $usefulness, 
                             $manageability, $grade, $completion, $conn);
 
+    $derived_course_info = Get_Derived_Course_Info_Array($conn, $course_id);
     $course_reviews = Get_Course_Reviews($conn, $course_id);
 }
 /* ==========================================================================

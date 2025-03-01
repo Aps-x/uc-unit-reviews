@@ -48,9 +48,7 @@
 
             <div class="home-grid | grid-auto-fill">
                 <?php foreach ($courses_list as $course): ?>
-                    <?php 
-                        $derived_course_info = Get_Derived_Course_Info_Array($conn, $course['id']); 
-                    ?>
+                    <?php $derived_course_info = Get_Derived_Course_Info_Array($conn, $course['id']); ?>
                     <article class="card">
                         <a href="php/views/course.view.php?course=<?= urlencode($course['id']) ?>" class="flow">
                             <header class="card__header">
