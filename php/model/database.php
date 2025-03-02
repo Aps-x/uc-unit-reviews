@@ -74,7 +74,7 @@ function Get_Derived_Course_Info_Array($conn, $course_id) {
             AVG(Usefulness) AS avg_usefulness, 
             AVG(Manageability) AS avg_manageability,
             COUNT(*) AS review_count
-        FROM Review
+        FROM review
         WHERE CourseID = ?
     ");
 
