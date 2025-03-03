@@ -22,15 +22,15 @@ Functions
 function Live_Search() {
     const search_query = SEARCH.value.toLowerCase();
 
-    for (let i = 0; i < CARDS.length; i++) {
-        const title = CARDS[i].querySelector(".card__title").textContent.toLowerCase();
-
+    CARDS.forEach(card => {
+        const title = card.querySelector(".card__title").textContent.toLowerCase();
+    
         if (title.includes(search_query)) {
-            CARDS[i].classList.remove("is-hidden");
+            card.classList.remove("is-hidden");
         } 
         else {
-            CARDS[i].classList.add("is-hidden");
+            card.classList.add("is-hidden");
         }
-    }
+    });
 }
 })();

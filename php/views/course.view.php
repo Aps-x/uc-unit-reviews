@@ -1,4 +1,4 @@
-<?php require '../controllers/course.php' ?>
+<?php require '../controllers/course.controller.php' ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,12 +15,13 @@
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
 
     <script src="../../js/prevent_multiple_review_submission.js" defer></script>
+    <script src="../../js/show_hide_review_text.js" defer></script>
 </head>
 <body class="course">
     <div class="texture"></div>
 
     <nav class="top-nav">
-        <a href="../../index.view.php" class="button">
+        <a href="../../index.php" class="button">
             <span class="button__shadow"></span>
             <span class="button__edge"></span>
             <span class="button__front">← Go Back</span>
@@ -64,7 +65,7 @@
 
             <p><?= $course_info["description"]; ?></p>
 
-            <h3 class="fw-bold fs-medium">Write A Review</h3>
+            <h2 class="fw-bold fs-medium">Write A Review</h2>
 
             <form class="review-form" method="post" id="review_form">
                 <label class="visually-hidden" for="title">Title your review:</label>
@@ -127,7 +128,11 @@
                         <div class="star-rating" style="--rating: <?= $review['rating'] ?>;" aria-label="Rating of this product is <?= $derived_course_info['avg_rating'] ?> out of 5."></div>
                     </div>
 
-                    <p class="review__body"><?= $review['text'] ?></p>
+                    <p class="review__body | line-clamp" id="<?= $review['id'] ?>"><?= $review['text'] ?></p>
+
+                    <button class="review__show-hide-btn" aria-expanded="false" aria-controls="<?= $review['id'] ?>">
+                        See more
+                    </button>
 
                     <div class="flexbox-grid | min-auto">
                         <div class="rating">
@@ -154,7 +159,7 @@
 
                     <div class="flexbox-grid | min-auto txt-center fw-bold">
                         <p>Term taken: <span class="fw-regular"><?= $review['completion'] ?></span></p>
-                        <p >Grade: <span class="fw-regular"><?= $review['grade'] ?></span></p>
+                        <p>Grade: <span class="fw-regular"><?= $review['grade'] ?></span></p>
                     </div>
                 </article>
             <?php endforeach; ?>

@@ -209,6 +209,20 @@ Components
   font-weight: var(--fw-bold);
   font-size: var(--fs-semi-medium);
 }
+.review__body {
+  --lines: 12;
+}
+.review__show-hide-btn {
+  display: none;
+  border: none;
+  color: var(--clr-red);
+  cursor: pointer;
+  background: transparent;
+  -webkit-appearance: none;
+}
+.review__show-hide-btn:hover {
+  text-decoration: underline;
+}
 
 .review-form {
   display: flex;

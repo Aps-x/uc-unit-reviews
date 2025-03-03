@@ -116,6 +116,7 @@ function Get_Course_Reviews($conn, $course_id) {
     $reviews = [];
     while ($review = $result->fetch_assoc()) {
         $reviews[] = [
+            'id' => htmlspecialchars($review['ID']),
             'title' => htmlspecialchars($review['Title']),
             'text' => htmlspecialchars($review['Text']),
             'rating' => htmlspecialchars(round($review['Rating'], 2)),
