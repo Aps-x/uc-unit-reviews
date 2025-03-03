@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Adam Seaton">
     <meta name="description" content="University of Canberra IT unit reviews">
+    <meta name="keywords" content="University, Canberra, UC, Unit, Course, Reviews, IT, Software, Engineering">
+    <link rel="shortcut icon" href="../../images/favicon.jpg" type="image/x-icon">
 
     <title>UC Unit Reviews | <?= $course_info["title"]; ?></title>
 

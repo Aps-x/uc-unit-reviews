@@ -10,6 +10,8 @@ $courses_list = Get_All_Courses_Array($conn);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Adam Seaton">
     <meta name="description" content="University of Canberra IT unit reviews">
+    <meta name="keywords" content="University, Canberra, UC, Unit, Course, Reviews, IT, Software, Engineering">
+    <link rel="shortcut icon" href="images/favicon.jpg" type="image/x-icon">
 
     <title>UC Unit Reviews</title>
 
@@ -74,7 +76,6 @@ $courses_list = Get_All_Courses_Array($conn);
 
     <footer class="footer">
         <p>This project is unofficial and is not affiliated or endorsed in any way by the University of Canberra</p>
-        <a href="https://github.com/Aps-x/uc-unit-reviews">This project is open source</a>
     </footer>
 </body>
 </html>
