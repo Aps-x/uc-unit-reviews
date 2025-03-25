@@ -61,7 +61,7 @@ $courses_list = Get_All_Courses_Array($conn);
                                 <h3 class="card__title"><?= $course['title'] ?> (<?= $course['id'] ?>)</h3>
 
                                 <div>
-                                    <div class="star-rating" style="--rating: <?= $derived_course_info['avg_rating'] ?>;" aria-label="Rating of this product is <?= $derived_course_info['avg_rating'] ?> out of 5."></div>
+                                    <div class="star-rating" style="--rating: <?= $derived_course_info['avg_rating'] ?>;" aria-label="Rating of this unit is <?= $derived_course_info['avg_rating'] ?> out of 5."></div>
                                     <p><?= $derived_course_info['review_count'] ?> Reviews</p>
                                 </div>
                             </header>
