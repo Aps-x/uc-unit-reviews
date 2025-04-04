@@ -12,7 +12,7 @@ $db_name = "uc_unit_reviews_db";
 try {   
     $conn = mysqli_connect($db_server, $db_user, $db_pass, $db_name);
 }
-catch(mysqli_sql_exception) {
+catch (mysqli_sql_exception) {
     Show_503();
 }
 
@@ -37,6 +37,7 @@ function Get_All_Courses_Array($conn) {
 
 function Does_Course_Exist($conn, $course_id) {
     $sql = "SELECT 1 FROM course WHERE ID = ? LIMIT 1";
+
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $course_id);
     $stmt->execute();
@@ -49,9 +50,12 @@ function Does_Course_Exist($conn, $course_id) {
 }
 
 function Get_Course_Info_Array($conn, $course_id) {
-    $stmt = $conn->prepare("SELECT * FROM course WHERE id = ?");
+    $sql = "SELECT * FROM course WHERE id = ?";
+
+    $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $course_id);
     $stmt->execute();
+
     $result = $stmt->get_result();
     $row = $result->fetch_assoc();
 
@@ -67,7 +71,7 @@ function Get_Course_Info_Array($conn, $course_id) {
 }
 
 function Get_Derived_Course_Info_Array($conn, $course_id) {
-    $stmt = $conn->prepare("
+    $sql = "
         SELECT 
             AVG(Rating) AS avg_rating, 
             AVG(Enjoyability) AS avg_enjoyability, 
@@ -76,8 +80,9 @@ function Get_Derived_Course_Info_Array($conn, $course_id) {
             COUNT(*) AS review_count
         FROM review
         WHERE CourseID = ?
-    ");
+    ";
 
+    $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $course_id);
     $stmt->execute();
 
@@ -104,7 +109,9 @@ function Get_Derived_Course_Info_Array($conn, $course_id) {
 }
 
 function Get_Course_Reviews($conn, $course_id) {
-    $stmt = $conn->prepare("SELECT * FROM review WHERE CourseID = ?");
+    $sql = "SELECT * FROM review WHERE CourseID = ?";
+
+    $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $course_id);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -135,13 +142,12 @@ function Get_Course_Reviews($conn, $course_id) {
 
 function Save_Review_To_Database($course_id, $title, $text, $rating, $enjoyability, $usefulness, 
                                     $manageability, $grade, $completion, $conn) {
+    $sql = "INSERT INTO review (CourseID, Title, Text, Rating, Enjoyability, Usefulness, 
+            Manageability, Grade, Completion) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-    $stmt = $conn->prepare("INSERT INTO review (CourseID, Title, Text, Rating, Enjoyability, Usefulness, 
-                            Manageability, Grade, Completion) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-
+    $stmt = $conn->prepare($sql);
     $stmt->bind_param("issiiiiis", $course_id, $title, $text, $rating, $enjoyability, $usefulness, 
                         $manageability, $grade, $completion);
-                        
     $stmt->execute();
     $stmt->close();
 }

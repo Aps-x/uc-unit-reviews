@@ -85,7 +85,7 @@
                 <div class="review-form__slider-group">
                     <label class="fw-bold" for="enjoyability">Enjoyability:</label>
                     <input class="review-form__slider" type="range" name="enjoyability" id="enjoyability" min="0" max="5" oninput="this.nextElementSibling.value = this.value">
-                    <output for="enjoyment">3</output>
+                    <output for="enjoyability">3</output>
                 </div>
 
                 <div class="review-form__slider-group">
