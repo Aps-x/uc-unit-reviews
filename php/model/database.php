@@ -50,7 +50,7 @@ function Does_Course_Exist($conn, $course_id) {
 }
 
 function Get_Course_Info_Array($conn, $course_id) {
-    $sql = "SELECT * FROM course WHERE id = ?";
+    $sql = "SELECT * FROM course WHERE ID = ?";
 
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $course_id);

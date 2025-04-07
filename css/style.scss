@@ -414,7 +414,7 @@ Pages
     &-grid {
         --min: 310px;
         --gap: 4rem;
-        // The grid has no cards that aren't hidden
+        // All cards are hidden
         &:not(:has(.card:not(.is-hidden)))::after {
             content: "No courses were found";
             display: block;
@@ -424,7 +424,7 @@ Pages
             font-size: var(--fs-medium);
             font-weight: var(--fw-bold);
         }
-        // The grid has at least one card not hidden
+        // At least one card is not hidden
         &:has(.card:not(.is-hidden))::after {
             content: "";
             display: none; 
